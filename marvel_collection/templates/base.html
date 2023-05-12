@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<link rel="stylesheet" href="../static/css/main.css">
+<title>Marvel Characters API</title>
+</head>
+<body>
+
+
+        <nav class="navbar">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('site.home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('site.about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('auth.signup') }}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('auth.signin') }}">Log In</a>
+                </li>
+                <li class="nav-item">
+                {% if current_user.is_authenticated %}
+                  <a class="nav-link" href="{{ url_for('site.profile') }}" >Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('site.chat') }}">Chat</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">LogOut</a>
+                  </li>
+                  <li class="nav-item">
+                {% endif %}
+              </ul>
+          </nav>
+      
+          {% block content %}
+          
+
+
+
+
+          {% endblock content %}   
+          
+        
+          <footer class="row" id="footer">
+            <div class="col">
+                <img src="../static/images/marvel.png" alt="marvel_logo" id="footer-image">
+            </div>
+            <div class="col">
+                <div class="footer-text-flex">
+                    <h5>Contact<h5>
+                 <p class="contact">1800-555-MARV</p>
+                 <div class="logos">
+                <img class="logo" src="../static/images/fb.png" alt="fb">
+                <img class="logo" src="../static/images/ig.png" alt="ig">
+                <img class="logo" src="../static/images/twitter.png" alt="twitter">
+                <img class="logo" src="../static/images/email.png" alt="email">
+                 </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="footer-text-flex">
+                    <h5>Need Help?</h5>
+                    <form action="" class="contact">
+                      <textarea placeholder="Send us a message!"></textarea>
+                      <button class="button">Submit</button>
+                   </form>
+                </div>
+            </div>
+            <div class="col">
+                <div class="footer-text-flex">
+                    <p class="copyright">&copyMARVEL</p>
+                </div>
+            </div>
+        </footer> 
+    </div>
+    </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
+</body>
+</html>

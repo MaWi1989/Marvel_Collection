@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="container">
+  <div class="row hero-section">
+    <div class="col-5">
+      <h3 class="header-text">Welcome, {{ current_user.username }}!</h3>
+        <div class="card" style="width: 18rem;">
+          <img src="../../static/images/avatar_m.png" class="card-img-top" alt="user_avatar">
+           <div class="card-body">
+              <h5 class="card-title">{{ current_user.username }}</h5>
+             <ul class="list-group list-group-flush">
+              <li class="email">{{ current_user.email }}</li>
+              <hr>
+             <li class="token">Token:<br> {{ current_user.token }}</li> 
+           </ul>
+        </div>
+       </div>
+    </div>
+    <aside class="col-5">
+        <div class="character-form">
+          <h4>Create a Character for your Collection!</h4>
+           {% include 'character_form.html' %}
+      </div>
+    </aside>
+  </div>
+</div>
+
+
+<div class="container characters">
+ <div class="row">
+  <h3>These are your Characters</h3>  
+    {% for character in all_characters %}
+      <div class="col">
+        <div class="card mb-3">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ character.name }}</h5>
+            <p class="card-text">Year introduced: {{ character.year_introduced }}</p>
+            <p class="card-text" class="text-body-secondary">{{ character.name }} appeared in {{ character.comics_appeared_in }} comics <br> 
+              and had their first appearance in {{ character.first_appeared_in }} in {{ character.year_introduced}}.</p>
+            <p class="card-text" class="text-body-secondary">{{ character.name }}s super powers are: {{ character.powers }}</p>
+          </div>
+        </div>
+      </div>
+  {% endfor %}
+  </div>
+ </div>
+
+  {% endblock content %}

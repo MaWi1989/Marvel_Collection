@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+  
+    <section id="home">
+        <div class="row top" >
+            <h1>Welcome to the most MARVELous API!</h1>
+            <h5>Create a collection of your most favorite MARVEL Super Heroes, compare with others', and chat about it. </h5>
+        </div> 
+        <div class="row">
+        <div class="col">
+            <div>
+                <img class="hero-pic" src="../../static/images/heroes.png" alt="Marvel_Heroes">
+            </div> 
+        </div> 
+        <div class="col" id="home-text">
+        <div class="signup-form"><h3>Sign Up Here!</h3>
+                {% include 'signup_form.html' %}
+        </div> 
+    </div>
+   
+      
+    
+    </div>
+           
+        </section>    
+</div>
+{% endblock content %}

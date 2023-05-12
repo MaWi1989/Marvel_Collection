@@ -1,0 +1,36 @@
+<form method = "POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset id="name-field">
+            {{ form.name.label }}            
+            {{ form.name(class = "form-control", placeholder="Name") }}
+        </fieldset>
+        <fieldset id="description-field">
+            {{ form.description.label }}            
+            {{ form.description(class = "form-control", placeholder="Description") }}
+        </fieldset>
+        <fieldset id="series-field">
+            {{ form.series.label }}            
+            {{ form.series(class = "form-control", placeholder="Series") }}
+        </fieldset>
+        <fieldset id="powers-field">
+            {{ form.powers.label }}            
+            {{ form.powers(class = "form-control", placeholder="Super Powers") }}
+        </fieldset>
+        <fieldset id="comics-field">
+            {{ form.comics_appeared_in.label }}            
+            {{ form.comics_appeared_in(class = "form-control", placeholder="Comics Appeared In") }}
+        </fieldset>
+        <fieldset id="first-field">
+            {{ form.first_appeared_in.label }}            
+            {{ form.first_appeared_in(class = "form-control", placeholder="First Appeared In") }}
+        </fieldset>
+        <fieldset id="year-field">
+            {{ form.year_introduced.label }}            
+            {{ form.year_introduced(class = "form-control", placeholder="Year Intrduced") }}
+        </fieldset>
+
+        {{ form.submit_button(class = "btn btn-primary btn-block mt-4") }}
+
+    </div>   
+</form>
