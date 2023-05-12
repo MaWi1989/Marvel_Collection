@@ -1,0 +1,1 @@
+gunicorn "marvel_colletion:app"

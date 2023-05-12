@@ -1,13 +1,30 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from marvel_collection.forms import MarvelCharacterForm, UserSignupForm
-from marvel_collection.models import Marvel_Character, db 
+from marvel_collection.models import Marvel_Character, db, User 
 
 site = Blueprint('site', __name__, template_folder='site_templates')
 
-@site.route('/')
+@site.route('/', methods= ['GET', 'POST'])
 def home():
     signup = UserSignupForm()
+    
+    if request.method == "POST" and signup.validate_on_submit():
+        first_name = signup.first_name.data
+        last_name = signup.last_name.data
+        email = signup.email.data
+        username = signup.username.data
+        password = signup.password.data
+        print( first_name, last_name, email, username)
+
+        user = User(first_name, last_name, email, username, password)
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('site.profile'))
+      
+      
     print('dundundundundun')
     return render_template('home.html', form=signup)
 
