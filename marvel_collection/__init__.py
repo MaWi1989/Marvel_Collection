@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 from .models import db as root_db, login_manager, ma
 from flask_cors import CORS
 
+
 app = Flask(__name__)
 
 app.register_blueprint(api)
@@ -29,6 +30,5 @@ ma.init_app(app)
 CORS(app)
 
 app.json_encoder = JSONEncoder 
-
 
 

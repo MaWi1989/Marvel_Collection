@@ -99,7 +99,7 @@ class Marvel_Character(db.Model):
 
 class Marvel_CharacterSchema(ma.Schema):
     class Meta:
-        fields = ['ID', 'Name', 'Description', 'Series', 'Super Powers', 'Comics Appeared In', 'First Appeared In', 'Year Introduced']
+        fields = ['id', 'name', 'description', 'series', 'powers', 'comics_appeared_in', 'first_appeared_in', 'year_introduced']
 
 
 character_schema = Marvel_CharacterSchema()
