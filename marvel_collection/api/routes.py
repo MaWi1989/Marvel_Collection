@@ -14,7 +14,7 @@ def getdata(current_user_token):
 
 @api.route('/all_characters', methods = ['POST'])
 @token_required
-def create_marvel_character(current_user_token):
+def create_marvel_character(current_user):
     name = request.json['name']
     description = request.json['description']
     series = request.json['series']
@@ -24,7 +24,7 @@ def create_marvel_character(current_user_token):
     year_introduced = request.json['year_introduced']
     user_id = current_user.id
 
-    print(f'BIG TESTER: {current_user_token.id}')
+    print(f'BIG TESTER: {current_user.id}')
 
     character = Marvel_Character(name, description, series, powers, comics_appeared_in, first_appeared_in, year_introduced, user_id = user_id )
 
@@ -49,7 +49,7 @@ def get_all_characters(current_user):
 
 @api.route('/all_characters/<id>', methods = ['GET'])
 @token_required
-def get_character(current_user_token, id):
+def get_character(current_user, id):
     if id:
         character = Marvel_Character.query.get(id)
         response = character_schema.dump(character)
@@ -61,7 +61,7 @@ def get_character(current_user_token, id):
 
 @api.route('/all_characters/<id>', methods = ['POST'])
 @token_required
-def update_character(current_user_token,id):
+def update_character(current_user,id):
     character = Marvel_Character.query.get(id)
     character.name = request.json['name']
     character.description = request.json['description']
@@ -80,7 +80,7 @@ def update_character(current_user_token,id):
 
 @api.route('/all_characters/<id>', methods = ['DELETE'])
 @token_required
-def delete_character(current_user_token, id):
+def delete_character(current_user, id):
     character = Marvel_Character.query.get(id)
     db.session.delete(character)
     db.session.commit()
